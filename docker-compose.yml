@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    #env_file:
+      #- .env
+    volumes:
+      - .:/app
+    #environment:
+      #- DB_DATABASE=storage/database_bkd.sqlite
+      #- APP_NAME="Aplikasi BKD"
+      #- STYLE_COLOR=purple
+      #- APP_URL=http://172.17.0.1:8000
+      #- KEYCLOAK_CLIENT_ID=test_client_bkd
+
