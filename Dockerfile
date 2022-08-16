@@ -5,8 +5,8 @@
 FROM php:8.1-cli-alpine as php-base
     WORKDIR /srv/laravel
 
-    RUN apk add --no-cache libzip-dev && \
-        docker-php-ext-install bcmath ctype pdo_mysql pcntl sockets && \
+    RUN apk add --no-cache libzip-dev postgresql-dev && \
+        docker-php-ext-install bcmath ctype pdo_pgsql pcntl sockets && \
         rm -rf /var/www && \
         chown -R www-data:www-data /srv/laravel
 
