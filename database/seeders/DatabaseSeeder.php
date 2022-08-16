@@ -13,6 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $USER_NUMBER=1000;
+
+        echo "Start seeding $USER_NUMBER users...\n";
+        \App\Models\User::factory($USER_NUMBER)->create();
+
+        //foreach (range(1,100) as $index) {
+            //echo "Batch #$index\n";
+            //\App\Models\User::factory(1000)->create();
+        //}
     }
 }

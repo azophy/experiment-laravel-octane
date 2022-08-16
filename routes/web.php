@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $model = App\Models\User::inRandomOrder()->first();
+    return response()->json($model);
 });
+
