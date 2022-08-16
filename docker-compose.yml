@@ -6,10 +6,12 @@ services:
       - 8000:8000
     #env_file:
       #- .env
-    volumes:
-      - .:/app
+    #volumes:
+      #- .:/app
     #command: php -S 0.0.0.0:8000
-    #environment:
+    #command: php artisan octane:start --host 0.0.0.0 --port 8000
+    environment:
+      - OCTANE_SERVER=roadrunner
       #- DB_DATABASE=storage/database_bkd.sqlite
       #- APP_NAME="Aplikasi BKD"
       #- STYLE_COLOR=purple

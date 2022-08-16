@@ -14,4 +14,9 @@ LARAVEL_SERVE_PORT="${PORT:-8000}"
 
 #php -S 0.0.0.0:8000
 php artisan migrate:fresh --seed --force
-php artisan serve --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT}
+
+# setup server
+php artisan octane:install --server=roadrunner
+
+#php artisan serve --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT}
+php artisan octane:start --server=roadrunner --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT}
