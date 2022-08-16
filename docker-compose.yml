@@ -8,6 +8,7 @@ services:
       #- .env
     volumes:
       - .:/app
+    #command: php -S 0.0.0.0:8000
     #environment:
       #- DB_DATABASE=storage/database_bkd.sqlite
       #- APP_NAME="Aplikasi BKD"
