@@ -1,12 +1,14 @@
 #!/bin/sh
 
-cd /app
+BASE_DIR="/srv/laravel"
+
+cd ${BASE_DIR}
 
 # pastikan file database sudah ada
-mkdir -p /app/database/storage
+mkdir -p "${BASE_DIR}/database/storage"
 
 SQLITE_DB_DATABASE="${DB_DATABASE:-storage/database.sqlite}"
-touch "/app/database/${SQLITE_DB_DATABASE}"
+touch "${BASE_DIR}/database/${SQLITE_DB_DATABASE}"
 
 # set default value for LARAVEL_SERVE_PORT
 # ref: https://stackoverflow.com/a/48829326
@@ -15,8 +17,5 @@ LARAVEL_SERVE_PORT="${PORT:-8000}"
 #php -S 0.0.0.0:8000
 php artisan migrate:fresh --seed --force
 
-# setup server
-php artisan octane:install --server=roadrunner
-
 #php artisan serve --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT}
-php artisan octane:start --server=roadrunner --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT}
+php artisan octane:start --server=roadrunner --host 0.0.0.0 --port ${LARAVEL_SERVE_PORT} --workers=${ROADRUNNER_WORKERS} --max-requests=${ROADRUNNER_MAX_REQUESTS} ; \
