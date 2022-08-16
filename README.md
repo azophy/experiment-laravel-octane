@@ -1,7 +1,9 @@
 EXPERIMENT BENCHMARKING LARAVEL OCTANE
 ======================================
 
-plan:
+Many people said that Laravel does scale, however you would often hit database connection limit before you hit Laravel Requests Limit. Using Laravel Octane, you should be able to use 1 connection for a single server/container, thus saving times required to initiate/terminat connections. Does it really work? Lets find out!
+
+## Plan
 - [x] create basic laravel API which randomly select a single User model
 - [x] use SQLite as database
 - [x] seed with many dummy data (1k)
@@ -13,6 +15,7 @@ plan:
 ## Current Feature
 - at container start, it would re-fresh database migration & automatically seed it with dummy data
 - a single endpoint '/' is provided which would return random user from database
+- set Postgresql's `max_connection` to some small value to measure effect of the limitation
 
 ## Results
 ### Screenshot Benchmark with Artisan Serve
