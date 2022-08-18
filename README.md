@@ -15,10 +15,16 @@ Many people said that Laravel does scale, however you would often hit database c
 ## Current Feature
 - at container start, it would re-fresh database migration & automatically seed it with dummy data
 - a single endpoint '/' is provided which would return random user from database
-- set Postgresql's `max_connection` to some small value to measure effect of the limitation
+- set Postgresql's `max_connection` to some small value to measure effect of the limitation (currently set to 20)
 
 ## Results
-### Screenshot Benchmark with Artisan Serve
-![Screenshot Benchmark with Artisan Serve](/results/screenshot-artisan-serve.png?raw=true "Screenshot Benchmark with Artisan Serve")
-### Screenshot Benchmark with Laravel Octane (with Roadrunner engine)
-![Screenshot Benchmark with Laravel Octane](/results/screenshot-laravel-octane.png?raw=true "Screenshot Benchmark with Laravel Octane (with Roadrunner engine)")
+### Tuesday, 16 August
+- Screenshot Benchmark with Artisan Serve
+    ![Screenshot Benchmark with Artisan Serve](/results/screenshot-artisan-serve.png?raw=true "Screenshot Benchmark with Artisan Serve")
+- Screenshot Benchmark with Laravel Octane (with Roadrunner engine)
+    ![Screenshot Benchmark with Laravel Octane](/results/screenshot-laravel-octane.png?raw=true "Screenshot Benchmark with Laravel Octane (with Roadrunner engine)")
+
+## Thursday, 18 August
+- added new loadtest using locust.io . setup script is in `/loadtest` directory
+- succedd reaching about 200 RPS but with more then half encountered error `failed: FATAL: sorry, too many clients already`
+- conclusion: with 5 octane-roadrunner replica, the number of connection is still high
